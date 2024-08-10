@@ -18,9 +18,7 @@ import com.viniciuspadovam.collabpro.domain.user.User;
 import com.viniciuspadovam.collabpro.repository.UserRepository;
 
 import jakarta.validation.Valid;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -36,7 +34,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDto> login(@RequestBody @Valid AuthDto data) {
-        log.info("realizando login.");
         var usernamePasswordAsToken = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = authenticationManager.authenticate(usernamePasswordAsToken);
 
